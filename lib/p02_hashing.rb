@@ -6,7 +6,7 @@ class Array
   def hash
     sum = 0
     self.each_with_index do |el, i|
-      sum += (el.hash * i)
+      sum += (el.hash * i + 1)
     end
     return sum
   end
@@ -26,6 +26,6 @@ class Hash
   # This returns 0 because rspec will break if it returns nil
   # Make sure to implement an actual Hash#hash method
   def hash
-    self.to_a.hash
+    to_a.sort { |a, b| a <=> b }.hash
   end
 end
